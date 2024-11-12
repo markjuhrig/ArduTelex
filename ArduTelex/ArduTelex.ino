@@ -917,7 +917,7 @@ void loop() {
       digitalWrite(SEND_PIN, DIAL_LINE_CURRENT_OFF);
       digitalWrite(COMMUTATE_PIN, DIAL_MODE);
       currentNumberPos=0;
-      #ifdef CENRTRALEX
+      #ifdef CENTRALEX
         RS_state = RS_STATE_PAUSE;
       #endif
       if(millis()>(last_timestamp+BEGIN_CALL_PULSE)){
@@ -1118,29 +1118,39 @@ void loop() {
       st_timestamp=millis();
       #ifdef _DEBUG
         PgmPrint("Send Version via TCPIP: ");
-        Serial.print(tmp,DEC);
-        PgmPrintln("");        
+        Serial.println(tmp,DEC);
+        PgmPrint(" ts:");
+        Serial.print(st_timestamp);
+        PgmPrintln(" ");        
       #endif
       break; 
     case CS_REC_VER:
+      #ifdef CENTRALEX
+        if (ReceiveTCPIPCommand() != NoCommand){
+          iTelexCommandParser(false);
+        }
+      #endif
       if ((RecVersion>0)||(millis()>(st_timestamp+TCPIP_TIMEOUT))){
           if (millis()>(st_timestamp+TCPIP_TIMEOUT)){
             state = CS_ABORT;
             #ifdef _DEBUG
-              PgmPrintln("TCPIP Timeout");
+              PgmPrint("TCPIP Timeout: millis: ");
+              Serial.println(millis(),DEC);
             #endif            
           }else {
             if (RecVersion != 1){
               state = CS_SEND_VER;
               tmp++;
               #ifdef _DEBUG
-                PgmPrintln("Wrong Version received, try again");
+                PgmPrint("Wrong Version received: ");
+                Serial.println(RecVersion, DEC);
               #endif
             }
             else {
               state = CS_SEND_DD;
               #ifdef _DEBUG
-                PgmPrintln("Correct Version received");
+                PgmPrint("Correct Version received: ");
+                Serial.println(RecVersion, DEC);
               #endif            
             }
           }
