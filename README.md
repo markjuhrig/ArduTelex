@@ -16,7 +16,7 @@ https://github.com/glsys/ArduinoTW39
 
 Usage:
 
-First you need to define if you want to build the Centralex (Remote Server) version or the normal version. The normal version is the version, that allows calling the ArduTelex via a public IP-Address or host-name on port 134. The Centralex version will can be called via the iTelex-Centralex-Server (telexgateway.de or 78.47.222.94) on a telex-number specific port. If you want build the Centralex version add the code-line "#define CENTRALEX" to ArduTelex.h
+First you need to define if you want to build the Centralex (Remote Server) version or the normal version. The normal version is the version, that allows calling the ArduTelex via a public IP-Address or host-name on port 134. The Centralex version can be called via the iTelex-Centralex-Server (telexgateway.de or 78.47.222.94) on a telex-number specific port. If you want build the Centralex version add the code-line "#define CENTRALEX" to ArduTelex.h
 
 In case of using the Centralex version you will need to put a file (owndata.txt) on the SD-Card into the folder /owndata. Full path: /owndata/owndata.txt
 The file must contan the following content: 
