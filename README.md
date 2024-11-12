@@ -65,7 +65,7 @@ Description:
 
 3rd line: your name and location
 
-4th line: Peer-Type (1-Baudot Host-Name or 2-Baudot ifexd IP)
+4th line: Peer-Type (1-Baudot Mode + Host-Name or 2-Baudot Mode + fixed IP-address)
 
 5th line: IP-Address or Host-Name
 
