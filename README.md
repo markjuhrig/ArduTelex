@@ -11,3 +11,73 @@ https://github.com/soruh/centralexTW39
 and
 
 https://github.com/glsys/ArduinoTW39
+
+--------------------------------------------------
+
+Usage:
+
+First you need to define if you want to build the Centralex (Remote Server) version or the normal version. The normal version is the version, that allows calling the ArduTelex via a public IP-Address or host-name on port 134. The Centralex version will can be called via the iTelex-Centralex-Server (telexgateway.de or 78.47.222.94) on a telex-number specific port. If you want build the Centralex version add the code-line "#define CENTRALEX" to ArduTelex.h
+
+In case of using the Centralex version you will need to put a file (owndata.txt) on the SD-Card into the folder /owndata. Full path: /owndata/owndata.txt
+The file must contan the following content: 
+
+Data:
+
+123456
+
+1234
+
++++
+
+
+The first line must be "Data:"
+The second line holds the Telex-Number of your Telex/TTY-Machine
+The third line holds the server pin for your iTelex-Account
+The forth line must contain "+++"
+
+
+It is also possible to define local address book. The address book files will be stored in the folder /pb. There will be one text-file per Telex-number. Each file name must be equal to the telex number (second line of the file) plus the file extension .txt
+
+Example 123456.txt
+
+ok
+
+123456
+
+Santa, North-Pole
+
+2
+
+192.168.178.90
+
+134
+
+\-
+
++++
+
+
+Description:
+
+1st line: ok
+
+2nd line: tlex number
+
+3rd line: your name and location
+
+4th line: Peer-Type (1-Baudot Mode + Host-Name or 2-Baudot Mode + fixed IP-address)
+
+5th line: IP-Address or Host-Name
+
+6th line: Port number
+
+7th line: \-
+
+8th line: +++
+
+
+More descriptions will follow ...
+
+
+
+
