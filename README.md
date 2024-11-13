@@ -35,6 +35,7 @@ The second line holds the Telex-Number of your Telex/TTY-Machine
 The third line holds the server pin for your iTelex-Account
 The forth line must contain "+++"
 
+---------------------------------------------------------------------
 
 It is also possible to define local address book. The address book files will be stored in the folder /pb. There will be one text-file per Telex-number. Each file name must be equal to the telex number (second line of the file) plus the file extension .txt
 
@@ -74,6 +75,16 @@ Description:
 7th line: \-
 
 8th line: +++
+
+--------------------------------------------------------------
+
+You also need to assign the following Arduino Hardware Pins: Comutate pin (polarity of the line current), Recieve pin, and Send pin. In additon the levels (low, high) for the different states need to be defined. Those definition must be made in ArduTelex.h
+
+If you are using a TW39-circut with a H-bridge as shown here:
+
+![TW39-with-H-Bridge](https://github.com/user-attachments/assets/89c4e95f-48fa-47c2-8236-cd1819ea3e6b)
+
+Then you need use this definition "#define SOLID_STATE_TW39", if you use a "traditional" TW39 circuitry then you comment out the SOLID_STATE_TW39 definition. The actual assignment of the low/high levels is done in ArduTelex.h from this code line " #ifdef SOLID_STATE_TW39       // solid state TW39 circuitry" on.
 
 
 More descriptions will follow ...
